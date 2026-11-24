@@ -129,9 +129,6 @@ jobs:
 
             - name: "Run tests for ${{ matrix.extension}}"
               working-directory: ${{ matrix.extension}}
-
-            - name: "Run tests"
-              working-directory: extra/${{ matrix.extension }}
               run: SYMFONY_DEPRECATIONS_HELPER=ignoreFile=../../tests/ignore-use-yield-deprecations ../../vendor/bin/simple-phpunit
 
     integration-tests:
