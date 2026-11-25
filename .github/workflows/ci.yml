@@ -119,7 +119,7 @@ jobs:
               run: vendor/bin/simple-phpunit --version
 
             - name: "Composer install ${{ matrix.extension}}"
-              working-directory: extra/${{ matrix.extension }}
+              working-directory: ${{ matrix.extension}}
               run: composer install
 
             - name: "Switch use_yield to true"
@@ -128,7 +128,7 @@ jobs:
                   sed -i -e "s/'use_yield' => false/'use_yield' => true/" extra/${{ matrix.extension }}/vendor/twig/twig/src/Environment.php
 
             - name: "Run tests for ${{ matrix.extension}}"
-              working-directory: extra/${{ matrix.extension }}
+              working-directory: ${{ matrix.extension}}
               run: SYMFONY_DEPRECATIONS_HELPER=ignoreFile=../../tests/ignore-use-yield-deprecations ../../vendor/bin/simple-phpunit
 
     integration-tests:
